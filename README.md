@@ -87,7 +87,7 @@ python:3.9.7-slim-buster (Dockerfile base image)
 	heroku login 
 	heroku container:login 
 	git add -> git commit 
-	git remote add https://git.heroku.com/mobilenet-flask-docker.git 
+	git remote add https://git.heroku.com/pytorchinfy.git 
 	heroku stack:set container
 	git push heroku master
 	
