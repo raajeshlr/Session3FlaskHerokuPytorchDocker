@@ -92,3 +92,5 @@ python:3.9.7-slim-buster (Dockerfile base image)
 	git push heroku master
 	
 Now it will deploy using docker.	
+
+# Make sure to do the changes accordingly in app.py
