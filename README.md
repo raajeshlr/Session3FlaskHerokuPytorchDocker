@@ -1,6 +1,6 @@
 This assignment is for deploying our app on heroku using docker.
 
-1. Normally, we can deploy our project to heroku by following the below instructions (2nd week assignment)
+# 1. Normally, we can deploy our project to heroku by following the below instructions (2nd week assignment)
 
 https://www.python-engineer.com/posts/pytorch-model-deployment-with-flask/
 Deploy to Heroku
@@ -15,10 +15,10 @@ Create a Procfile and insert this:
 web: gunicorn wsgi:app
 Modify path names to take the app package as base:
 
-# in the main.py file:
+in the main.py file:
 from app.torch_utils import get_prediction, transform_image
 
-# in the torch_utils.py file
+in the torch_utils.py file
 PATH = "app/mnist_ffn.pth"
 Create a runtime.txt and insert the Python version you are using:
 
@@ -35,7 +35,7 @@ Add a .gitignore. You can take this version for Python from GitHub. Also add the
 
 test/
 
-# Byte-compiled / optimized / DLL files
+Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -70,7 +70,7 @@ I hope you enjoyed this tutorial!
 
 
 
-2. Deploy the project using Docker
+# 2. Deploy the project using Docker
 For deploying using docker, you need to tell heroku to use dockerfile which can be done using heroku.yml
 So, first thing is to have heroku.yml in your dockerfile directory.
 Second is to do few command changes, basically you need to set container.
