@@ -83,13 +83,13 @@ python:3.9.7-slim-buster (Dockerfile base image)
 
  - docker run -d -p 127.0.0.1:5000:80 pytorchflask
 
-	used 1.9.1+cpu for torch & 0.10.1+cpu for torchvision (in requirements.txt file)
-	heroku login 
-	heroku container:login 
-	git add -> git commit 
-	git remote add https://git.heroku.com/pytorchinfy.git 
-	heroku stack:set container
-	git push heroku master
+	used 1.9.1+cpu for torch & 0.10.1+cpu for torchvision (in requirements.txt file)  
+	heroku login  
+	heroku container:login   
+	git add -> git commit  
+	git remote add https://git.heroku.com/pytorchinfy.git  
+	heroku stack:set container  
+	git push heroku master  
 	
 Now it will deploy using docker.	
 
