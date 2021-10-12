@@ -94,3 +94,20 @@ python:3.9.7-slim-buster (Dockerfile base image)
 Now it will deploy using docker.	
 
 # Make sure to do the changes accordingly in app.py
+
+
+# 3. Use volumes to avoid data loss from container (Tried in local)  
+
+Usually docker related data will be stored in the network created by docker.  
+https://stackoverflow.com/questions/43181654/locating-data-volumes-in-docker-desktop-windows  
+\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes\  
+Give the above command in the file explorer..  
+
+We need to create volume and if we mention it while running the image, it uses that volume.  
+In this way, even if the container gets removed, we can run the image again mentioning volume, it runs in different container, but data is persisted from  
+previous container..  
+
+- docker volume create "your volume name"  
+- docker volume inspect "your volume name" (for reference)  
+- docker run -d -v "your volume name:/app" -p 127.0.0.1:5000:80 pytorchflask  
+https://www.youtube.com/watch?v=Ff0OCpEwDnQ  
