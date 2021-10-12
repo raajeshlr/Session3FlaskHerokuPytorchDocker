@@ -1,6 +1,6 @@
 This assignment is for deploying our app on heroku using docker.
 
-1. Normally, we can deploy our project to heroku by following the below instructions (2nd week assignment)
+# 1. Normally, we can deploy our project to heroku by following the below instructions (2nd week assignment)
 
 https://www.python-engineer.com/posts/pytorch-model-deployment-with-flask/
 Deploy to Heroku
@@ -15,10 +15,10 @@ Create a Procfile and insert this:
 web: gunicorn wsgi:app
 Modify path names to take the app package as base:
 
-# in the main.py file:
+in the main.py file:
 from app.torch_utils import get_prediction, transform_image
 
-# in the torch_utils.py file
+in the torch_utils.py file
 PATH = "app/mnist_ffn.pth"
 Create a runtime.txt and insert the Python version you are using:
 
@@ -35,7 +35,7 @@ Add a .gitignore. You can take this version for Python from GitHub. Also add the
 
 test/
 
-# Byte-compiled / optimized / DLL files
+Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -70,7 +70,7 @@ I hope you enjoyed this tutorial!
 
 
 
-2. Deploy the project using Docker
+# 2. Deploy the project using Docker
 For deploying using docker, you need to tell heroku to use dockerfile which can be done using heroku.yml
 So, first thing is to have heroku.yml in your dockerfile directory.
 Second is to do few command changes, basically you need to set container.
@@ -83,12 +83,31 @@ python:3.9.7-slim-buster (Dockerfile base image)
 
  - docker run -d -p 127.0.0.1:5000:80 pytorchflask
 
-	used 1.9.1+cpu for torch & 0.10.1+cpu for torchvision (in requirements.txt file)
-	heroku login 
-	heroku container:login 
-	git add -> git commit 
-	git remote add https://git.heroku.com/mobilenet-flask-docker.git 
-	heroku stack:set container
-	git push heroku master
+	used 1.9.1+cpu for torch & 0.10.1+cpu for torchvision (in requirements.txt file)  
+	heroku login  
+	heroku container:login   
+	git add -> git commit  
+	git remote add https://git.heroku.com/pytorchinfy.git  
+	heroku stack:set container  
+	git push heroku master  
 	
 Now it will deploy using docker.	
+
+# Make sure to do the changes accordingly in app.py
+
+
+# 3. Use volumes to avoid data loss from container (Tried in local)  
+
+Usually docker related data will be stored in the network created by docker.  
+https://stackoverflow.com/questions/43181654/locating-data-volumes-in-docker-desktop-windows  
+\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes\  
+Give the above command in the file explorer..  
+
+We need to create volume and if we mention it while running the image, it uses that volume.  
+In this way, even if the container gets removed, we can run the image again mentioning volume, it runs in different container, but data is persisted from  
+previous container..  
+
+- docker volume create "your volume name"  
+- docker volume inspect "your volume name" (for reference)  
+- docker run -d -v "your volume name:/app" -p 127.0.0.1:5000:80 pytorchflask  
+https://www.youtube.com/watch?v=Ff0OCpEwDnQ  

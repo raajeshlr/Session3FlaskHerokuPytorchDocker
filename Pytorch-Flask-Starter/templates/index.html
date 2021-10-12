@@ -1,7 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="row py-2">
+<label for="PytorchHerokuDocker">Choose any option:  </label>
+		<select id="PytorchHerokuDocker" onchange = "displayinfer()">
+		  <option value=""></option>
+		  <option value="About Team">About Team</option>
+		  <option value="Infer">Infer</option>
+		</select>
+</div>
+<div class="container" id="AboutTeam" style="display:none">
+<table>
+  <tr>
+    <th>Team Name</th>
+    <th>Team Members</th>
+    <th>Work</th>
+  </tr>
+  <tr>
+    <td>EMLOPS INFY</td>
+    <td>Ramjee R, Balaji A J, Raajesh L R, Mahesh R</td>
+    <td>Infosys, Infosys, Accenture, Infosys</td>
+  </tr>
+  <tr>
+  </tr>
+</table>  
+</div>
+
+<div class="container" id="inferdiv" style="display:none"> 
+
 <div class="row">
+
   <div class="col-sm-8 offset-sm-2">
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
       <h1 class="display-4">Pytorch Flask Docker App</h1>
@@ -45,4 +73,6 @@
     </div>
   </div>
 </div>
+</div>
+
 {% endblock %}

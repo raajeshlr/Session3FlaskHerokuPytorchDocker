@@ -20,6 +20,7 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+
   </head>
 
   <body cz-shortcut-listen="true">
@@ -28,7 +29,7 @@
     >
       <h5 class="my-0 mr-md-auto font-weight-normal">
         <a href="/">Flask Pytorch App</a>
-      </h5>
+      </h5>	  
       <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/about">About project</a>
       </nav>
@@ -132,6 +133,24 @@
     ></script>
 
     <script>
+	
+	function displayinfer(){
+		//alert("Hello");
+		var x = document.getElementById("PytorchHerokuDocker").value;
+		//alert(x);
+		if(x == "Infer")
+		{
+		//alert("inside ir");
+		document.getElementById("inferdiv").style.display="block";
+		document.getElementById("AboutTeam").style.display="none";
+		}
+		else if(x == "About Team")
+		{
+		document.getElementById("inferdiv").style.display="none";
+		document.getElementById("AboutTeam").style.display="block";		
+		}		
+		}
+		
       $("#inputGroupFile").on("change", function () {
         //get the file name
         let fileName = $(this).val();
@@ -145,5 +164,22 @@
         $(this).next(".custom-file-label").html(name);
       });
     </script>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>	
   </body>
 </html>

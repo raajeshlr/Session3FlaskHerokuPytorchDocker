@@ -9,6 +9,9 @@ from PIL import Image
 
 app = Flask(__name__)
 
+#for local using app.py
+#app.config['UPLOAD_FOLDER'] = 'static\img'
+#for docker
 app.config['UPLOAD_FOLDER'] = './static/img'
 
 model = MobileNet()
@@ -74,6 +77,10 @@ def success():
 
 if __name__ == '__main__':
     app.debug = True
+    
+    #for docker
     port = int(os.environ.get("PORT", 80))
     app.run(host='0.0.0.0', port=port, debug=True)
+    
+    #for local
     #app.run(host='0.0.0.0', port=5000, debug=True)
