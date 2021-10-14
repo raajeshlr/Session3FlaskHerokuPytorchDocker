@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class="row py-2">
 <label for="PytorchHerokuDocker">Choose any option:  </label>
 		<select id="PytorchHerokuDocker" onchange = "displayinfer()">
@@ -9,6 +10,17 @@
 		  <option value="Infer">Infer</option>
 		</select>
 </div>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  {% if results %} 
+  <p class="text-center">Sample Image:
+    <img src="{{results['img']}}"" alt="" width=120, height=120>    
+    </p>
+  <p class="mt-5">Result: <strong>{{results['inference']}}%</strong></p>   
+  <p class="mt-5">Confidence: <strong>{{results['confidence']}}%</strong></p>
+  {% endif%}  
+</div>
+
 <div class="container" id="AboutTeam" style="display:none">
 <table>
   <tr>
@@ -18,7 +30,7 @@
   </tr>
   <tr>
     <td>EMLOPS INFY</td>
-    <td>Ramjee R, Balaji A J, Raajesh L R, Mahesh R</td>
+    <td>Ramjee R1, Balaji A J, Raajesh L R, Mahesh R</td>
     <td>Infosys, Infosys, Accenture, Infosys</td>
   </tr>
   <tr>

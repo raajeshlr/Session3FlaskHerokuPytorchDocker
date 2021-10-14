@@ -8,7 +8,7 @@ Recent predictions: <br/>
 {% endfor %}
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    {% if pred_list %} 
+    {% if pred_list %}
     {% for pred in pred_list %}
     <h1 class="display-4">{{pred['inference']}}!</h1>
     <p class="mt-5">Confidence: <strong>{{pred['confidence']}}%</strong></p>

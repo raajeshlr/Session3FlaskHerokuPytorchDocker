@@ -6,6 +6,7 @@ from io import BytesIO
 from base64 import b64encode
 from math import floor
 from PIL import Image
+import sys
 
 app = Flask(__name__)
 
@@ -13,12 +14,18 @@ app = Flask(__name__)
 #app.config['UPLOAD_FOLDER'] = 'static\img'
 #for docker
 app.config['UPLOAD_FOLDER'] = './static/img'
+#app.config["sample_img"] = 'eagle.jpg'
 
 model = MobileNet()
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    imglocation = os.path.join(app.config['UPLOAD_FOLDER'],app.config["sample_img"])
+    #img1 = Image.open(imglocation)
+    inference, confidence = model.infer(imglocation)
+    confidence = floor(confidence * 10000) / 100
+    results = {'inference': inference, 'confidence': confidence, 'img': imglocation}
+    return render_template('index.html',results=results)
 
 
 @app.route('/about')
@@ -80,6 +87,7 @@ if __name__ == '__main__':
     
     #for docker
     port = int(os.environ.get("PORT", 80))
+    app.config["sample_img"] = sys.argv[1]
     app.run(host='0.0.0.0', port=port, debug=True)
     
     #for local
