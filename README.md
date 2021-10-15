@@ -100,7 +100,7 @@ Now it will deploy using docker.
 
 Usually docker related data will be stored in the network created by docker.  
 https://stackoverflow.com/questions/43181654/locating-data-volumes-in-docker-desktop-windows  
-\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes\  
+-  \\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes\
 Give the above command in the file explorer..  
 
 We need to create volume and if we mention it while running the image, it uses that volume.  
